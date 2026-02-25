@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prime Digital Studio</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<style>
+body {
+    scroll-behavior: smooth;
+    font-family: 'Prompt', sans-serif;
+  
+}
+.navbar {
+    background: linear-gradient(135deg, #3a0ca3, #4361ee);
+    backdrop-filter: blur(10px);
+}
+
+.hero {
+  height: 70vh;
+  min-height: 50vh;
+  position: relative;
+  overflow: hidden;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(-45deg, #0d6efd, #6610f2, #0dcaf0, #6f42c1);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  color: white;
+  padding-top: 120px;
+  padding-bottom: 60px;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    filter: blur(120px);
+    top: -150px;
+    right: -150px;
+}
+
+
+.section-padding {
+    padding: 80px 20px;
+}
+.footer {
+    background: linear-gradient(135deg, #3a0ca3, #4361ee);
+    color: white;
+    padding: 30px  20px;
+    text-align: center;
+}
+
+.line-float{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #06C755;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+.line-float img{
+    width: 35px;
+    height: 35px;
+}
+
+.line-float:hover{
+    transform: scale(1.1);
+}
+
+.line-wrapper{
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 999;
+}
+
+.line-button{
+    display: flex;
+    align-items: center;
+    background: #06C755;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 40px;
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transition: 0.3s ease;
+}
+
+.line-button img{
+    width: 28px;
+    height: 28px;
+    margin-left: 8px;
+}
+
+.line-text{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.line-button:hover{
+    background: #05b84f;
+    transform: translateY(-2px);
+}
+
+/* ซ่อนข้อความบนมือถือ */
+@media(max-width:768px){
+
+    .line-button{
+        width: 60px;
+        height: 60px;
+        padding: 0;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .line-text{
+        display: none;
+    }
+
+    .line-button img{
+        margin: 0;
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.line-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: #06c755;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.line-btn:hover {
+    background: #04a944;
+}
+
+/* แอนิเมชั่นลอยเบา ๆ */
+@keyframes softFloat {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+.line-wrapper{
+    animation: softFloat 3s ease-in-out infinite;
+}
+
+.service-card,
+.portfolio-card {
+  transition: all 0.3s ease;
+}
+
+.service-card:hover,
+.portfolio-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+
+.icon-box {
+    font-size: 40px;
+}
+
+#services {
+    background: #f8f9fc;
+    padding: 100px 0;
+}
+
+/* HERO ANIMATION */
+.hero h1,
+.hero p,
+.hero .btn,
+.hero .badge {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.hero h1 { animation-delay: 0.2s; }
+.hero p { animation-delay: 0.4s; }
+.hero .btn { animation-delay: 0.6s; }
+.hero .badge { animation-delay: 0.1s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+
+.fade-scroll.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pricing {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+    flex-wrap: nowrap;   /* สำคัญมาก */
+}
+
+.price-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 280px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    flex: 1;
+    max-width: 320px;
+}
+
+.price-card:hover {
+    transform: translateY(-10px);
+}
+
+.price-card h3 {
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 15px 0;
+    color: #3a0ca3;
+}
+
+.price-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.price-card li {
+    margin: 10px 0;
+}
+
+.price-card button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #3a0ca3;
+    color: white;
+    cursor: pointer;
+}
+
+.highlight {
+    background: linear-gradient(135deg, #3a0ca3, #4361ee);
+    color: white;
+    transform: scale(1.05);
+}
+
+.highlight .price {
+    color: white;
+}
+
+.highlight button {
+    background: white;
+    color: #3a0ca3;
+}
+
+.price-card {
+    position: relative;
+}
+
+.badge {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: red;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+    .pricing-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .price-card {
+        width: 90%;
+    }
+
+    .highlight {
+        transform: scale(1);
+    }
+}
+</style>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <img src="images/323-removebg-preview.png" class="img-fluid" width="100" alt="logo">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">หน้าแรก</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">บริการของเรา</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pack">แพ็กเกจราคา</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">ติดต่อ</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="home" class="hero text-white text-center">
+  <div class="container-fluid">
+    
+    <span class="badge bg-light text-dark mb-3 px-3 py-2">
+      เริ่มต้นเพียง 1,900 บาท
+    </span>
+
+    <h1 class="display-4 fw-bold mb-3">
+      รับทำเว็บไซต์ราคาประหยัด
+    </h1>
+
+    <p class="lead mb-4">
+      สร้างเว็บไซต์ให้ร้านคุณดูน่าเชื่อถือ ภายใน 7 วัน
+    </p>
+
+    <a href="#contact" class="btn btn-light btn-lg px-4 shadow">
+      ติดต่อเลย
+    </a>
+
+    <div class="mt-4 small opacity-75">
+      ✔ รองรับมือถือ 100% &nbsp; | &nbsp; ✔ โหลดเร็ว &nbsp; | &nbsp; ✔ ดูแลหลังส่งงาน
+    </div>
+
+  </div>
+</section>
+<section id="" class="py-5 bg-light text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <h2 class="counter" data-target="50">0</h2>
+        <p class="text-muted">โปรเจกต์ที่ดูแล</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h3 class="fw-bold">7 วัน</h3>
+        <p class="text-muted">ส่งงานไว</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h3 class="fw-bold">100%</h3>
+        <p class="text-muted">รองรับมือถือ</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services" class="py-5 fade-scroll">
+  <div class="container text-center">
+    <h2 class="mb-5 fw-bold">บริการของเรา</h2>
+    <div class="row">
+
+      <div class="col-md-4 mb-4">
+        <div class="card border-0 shadow-sm h-100 service-card">
+          <div class="card-body">
+            <div class="display-5 mb-3">💻</div>
+            <h5 class="fw-bold">เว็บร้านค้า</h5>
+            <p class="text-muted">เหมาะสำหรับร้านออนไลน์และธุรกิจขนาดเล็ก</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card border-0 shadow-sm h-100 service-card">
+          <div class="card-body">
+            <div class="display-5 mb-3">📱</div>
+            <h5 class="fw-bold">รองรับมือถือ</h5>
+            <p class="text-muted">แสดงผลสวยงามทุกอุปกรณ์</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card border-0 shadow-sm h-100 service-card">
+          <div class="card-body">
+            <div class="display-5 mb-3">⚡</div>
+            <h5 class="fw-bold">โหลดเร็ว</h5>
+            <p class="text-muted">เว็บไซต์น้ำหนักเบา ใช้งานง่าย</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio -->
+<section id="portfolio" class="bg-light section-padding fade-scroll">
+  <div class="container text-center">
+    <h2 class="mb-5"></h2>
+    <div class="row">
+      <div class="col-md-4">
+        <img src="" class="img-fluid rounded">
+      </div>
+      <div class="col-md-4">
+        <img src="" class="img-fluid rounded">
+      </div>
+      <div class="col-md-4">
+        <img src="" class="img-fluid rounded">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pack" class="pricing py-5">
+    <div class="container text-center">
+        <h2 class="text-center mb-5">แพ็กเกจราคา</h2>
+
+        <div class="row justify-content-center">
+
+            <!-- Basic -->
+            <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-4">
+                <div class="price-card">
+                    <h3>Basic</h3>
+                    <p class="price">฿1,990</p>
+                    <ul>
+                        <li>เว็บไซต์หน้าเดียว</li>
+                        <li>รองรับมือถือ</li>
+                        <li>แก้ไข 1 ครั้ง</li>
+                    </ul>
+                    <a href="https://line.me/ti/p/~301020044" class="line-btn">สั่งทำเลย</a>
+                </div>
+            </div>
+
+            <!-- Pro -->
+            <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-4">
+                <div class="price-card highlight">
+                    <div class="badge">ขายดีที่สุด</div>
+                    <h3>Pro</h3>
+                    <p class="price">฿3,990</p>
+                    <ul>
+                        <li>ทุกอย่างใน Basic</li>
+                        <li>ออกแบบพรีเมียม</li>
+                        <li>เพิ่ม SEO เบื้องต้น</li>
+                    </ul>
+                    <a href="https://line.me/ti/p/~301020044" class="line-btn">สั่งทำเลย</a>
+                </div>
+            </div>
+
+            <!-- Premium -->
+            <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-4">
+                <div class="price-card">
+                    <h3>Premium</h3>
+                    <p class="price">฿6,990</p>
+                    <ul>
+                        <li>ทุกอย่างใน Pro</li>
+                        <li>ระบบฟอร์มติดต่อ</li>
+                        <li>ดูแล 30 วัน</li>
+                    </ul>
+                    <a href="https://line.me/ti/p/~301020044" class="line-btn">สั่งทำเลย</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="section-padding text-center fade-scroll">
+  <div class="container">
+    <h2 class="mb-4">ติดต่อเรา</h2>
+    <p>สนใจทำเว็บไซต์ ทักมาปรึกษาฟรี</p>
+    <a href="https://line.me/ti/p/~301020044" class="btn btn-success btn-lg">Line</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<div class="footer">
+  © 2026 Prime Digital Studio
+</div>
+
+
+<!-- Floating Chat Button -->
+<div class="line-wrapper">
+    <a href="https://line.me/ti/p/~301020044" target="_blank" class="line-button">
+        <span class="line-text">แชทกับเรา</span>
+        <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="line">
+    </a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+document.querySelectorAll(".fade-scroll").forEach(el => {
+  observer.observe(el);
+});
+</script>
+<script>
+const counters = document.querySelectorAll(".counter");
+
+counters.forEach(counter => {
+  const updateCount = () => {
+    const target = +counter.getAttribute("data-target");
+    const count = +counter.innerText;
+
+    const increment = target / 100;
+
+    if (count < target) {
+      counter.innerText = Math.ceil(count + increment);
+      setTimeout(updateCount, 20);
+    } else {
+      counter.innerText = target;
+    }
+  };
+
+  updateCount();
+});
+</script>
+<script>
+AOS.init();
+</script>
+
+</body>
+</html>
